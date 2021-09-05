@@ -3,17 +3,20 @@
   <head>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-      <title>foodBox</title>
+      <title>FoodBox</title>
       
       <style>
           body {
-            background: lightgray;
+            background: #e5e5e5;
+            font-family: "Roboto";
           }
           .topo {
-              background: red;
+              background: #cf2b2b;
               color: white;
               padding: 15px;
               border-radius: 15px;
+              box-shadow: 0 0 10px 0 #bbbbbb;
+              
           }
           
           .produto {
@@ -21,19 +24,27 @@
               padding: 15px;
               border-radius: 10px;
               margin-bottom: 10px;
+              box-shadow: 0 0 10px;
+              cursor: pointer;
+              border: 5px solid white;
           }
           
           h1 {
               margin: 0;
+              font-family: "Righteous";
+              font-weight: normal;
               }
           
           h2 {
               margin: 0;
               font-size: 18px;
+              font-weight: normal;
           }
           h3 {
               font-size: 30px;
               margin-bottom: 5px;
+              font-family: "Righteous";
+              font-weight: normal;
           }
           
           h4 {
@@ -43,54 +54,151 @@
           }
           
           img {
-             width: 110px;
-             border-radius: 5px;
+             width: 105px;
+             border-radius: 10px;
              float: right;
+             margin-left: 180px;
+          }
+          p {
+              margin: 15px 0 0 0;
+          }
+          
+          .preço {
+              font-weight: bold;
+              font-size: 18px;
+                
+          }
+          
+          .botao{
+              background: #0b940b;
+              text-align: center;
+              padding: 15px;
+              margin-top: 30px;
+              margin-bottom: 100px;
+              border-radius: 50px;
+              color: white;
+              font-weight: bold;
+              font-size: 18px;
+              cursor: pointer;              
           }
       </style>
   </head>
-  <body>  
+    
+  <body> 
+      
      <div class="topo">
      <h1>FoodBox</h1>
      <h2>Monte seu Box e receba em 15 minutos!</h2>
      </div>
      
-     <h3>Escolha seu Prato</h3>     
-     <div class="produto">
+     <h3>Escolha seu Prato</h3>  
+      
+     <div id="frango" class="produto" onclick="escolherFrango()">
          <img src="https://p2.trrsf.com/image/fget/cf/1200/1200/filters:quality(85)/images.terra.com/2020/12/11/frango-frito-com-alho-768x540.jpg">
          
-         <h4> Frango Yin-Yang</h4>
+         <h4>Frango Yin-Yang</h4>
          <p>Um pouco de batata, um pouco de salada</p>
-         <p><strong>R$ 19,90</strong></p>
+         <p class="preco">R$ 19,90</p>
      </div>
       
-      <div class="produto">
+      <div id="carne" class="produto" onclick="escolherCarne()">
          <img src="https://static1.conquistesuavida.com.br/articles//4/92/24/@/27480-uma-boa-opcao-para-incrementar-a-carne-v-article_block_media-2.jpg">
          
          <h4> Carne e Salada </h4>
+          
          <p>Partida ao meio pra parecer mais carne</p>
-         <p><strong>R$ 24,90</strong></p>
+         <p class="preco">R$ 24,90</p>
      </div>
       
       <h3>Escolha sua bebida</h3>
-      <div class="produto">
+      
+      <div id="coca" class="produto" onclick="escolherCoca()">
          <img src="https://d3pt1seq4txask.cloudfront.net/Custom/Content/Products/01/01/0101_refrigerante-coca-cola-lata-350ml-14_m6_637417305699974110.jpg">
          
          <h4> Coca-cola gelada </h4>
          <p>Normal, zero ou stevia. Vai na sorte</p>
-         <p><strong>R$ 5,90</strong></p>
+         <p class="preco">R$ 6,90</p>
      </div>
-      <div class="produto">
+      
+      <div id="refresco" class="produto"  onclick="escolherefresco()">
          <img src="https://www.receitasdemae.com.br/wp-content/uploads/2010/01/Refrescos-1024x762.jpg">
          
          <h4> Refresco </h4>
          <p>podia ser suco, mas e igual agua</p>
-         <p><strong>R$ 2,90</strong></p>
+         <p class="preco">R$ 2,90</p>
      </div>
-     
-     <div class="produto">
-          alguma coisa dentro
+      
+      <h3>Escolha sua sobremesa</h3>
+      
+     <div id="sorvete" class="produto" onclick="escolherSorvete()">
+         <img src="https://blog.finamac.com/wp-content/uploads/2019/06/287027-conheca-aqui-x-dicas-para-inovar-no-sorvete-de-casquinha.jpg">
+         
+         <h4> Sorvete </h4>
+         <p>Sorvete bem gelado</p>
+         <p class="preco">R$ 5,90</p>
      </div>
-     
+      
+      <div id="pudim" class="produto" onclick="escolherPudim()">
+         <img src="https://s2.glbimg.com/CAKAifTOnXjO0CNfQoqIv4KjqIA=/696x390/smart/filters:cover():strip_icc()/i.s3.glbimg.com/v1/AUTH_e84042ef78cb4708aeebdf1c68c6cbd6/internal_photos/bs/2020/E/O/5HOokdRpWTWIAgoGdP7A/pudimmaizena.jpeg">
+         
+         <h4> Pudim </h4>
+         <p>Apenas um saboroso Pudim</p>
+         <p class="preco">R$ 7,90</p>
+     </div>
+      
+     <div class="botao" onclick="finalizarPedido()">
+          finalizar pedido
+    </div>
+      
+      <script>
+          
+          let prato;
+          let bebida;
+          let sobremessa;
+          
+          function escolherFrango() {
+            document.getElementById("frango").style.borderColor = "green";
+            document.getElementById("carne").style.borderColor = "white";
+            prato = "Frango";
+          }
+          
+          function escolherCarne() {
+            document.getElementById("carne").style.borderColor = "green";
+            document.getElementById("frango").style.borderColor = "white";
+            prato = "Carne";
+          }
+          
+          function escolherCoca(){
+              document.getElementById("coca").style.borderColor = "green";
+              document.getElementById("refresco").style.borderColor = "white";
+              bebida = "Coca";
+          }
+          
+          function escolherefresco(){
+              document.getElementById("refresco").style.borderColor = "green";
+              document.getElementById("coca").style.borderColor = "white";
+              bebida = "Refresco";
+          }
+          
+          function escolherSorvete(){
+              document.getElementById("sorvete").style.borderColor = "green";
+              document.getElementById("pudim").style.borderColor = "white";
+              sobremessa = "Sorvete";
+          }
+          
+          function escolherPudim(){
+              document.getElementById("pudim").style.borderColor = "green";
+              document.getElementById("sorvete").style.borderColor = "white";
+              sobremessa = "Pudim";
+          }
+          
+          function finalizarPedido(){
+              let mensagem;
+              mensagem = "Ola, gostaria de pedir um Combo: " + prato + ", " + bebida + " e " + sobremessa;   
+              window.open("https://api.whatsapp.com/send/?phone=31994087449&text=" + mensagem);
+          }
+      
+      
+      </script>
  </body>
 </html>
